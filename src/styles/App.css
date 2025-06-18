@@ -17,9 +17,29 @@ body {
 .main-container {
   height: calc(100% - 20px);
   width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.side-menu-bar {
+  width: 60px;
+  height: 100%;
+  background-color: #d9d9d9;
+}
+
+.side-menu-space {
+  height: 100%;
+  width: 50px;
+  background-color: #efefef;
+}
+
+.main-display-space {
+  height: 100%;
+  flex: 1;
 }
 
 .app-status-bar {
   height: 20px;
   width: 100%;
+  background-color: #666666;
 }

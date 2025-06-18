@@ -1,22 +1,25 @@
-import './App.css';
+import './styles/App.css';
 import { AppSettingProvider } from './components/AppSetting/SettingProvider';
+import { AppStateProvider } from './components/AppState/StateProvider';
 
 
 
 function App() {
   return (
     <AppSettingProvider>
-      <div className='main-container'>
-        {/* サイドメニューバー */}
-        <div className='side-menu-bar'></div>
-        {/* サイドメニューバー関連のUI置くとこ */}
-        <div className='side-menu-space'></div>
-        {/* アイテム表示部分 */}
-        <div className='main-display-space'></div>
-      </div>
-      <div className='app-status-bar'></div>
+      <AppStateProvider>
+        <div className="main-container">
+          {/* サイドメニューバー */}
+          <div className="side-menu-bar"></div>
+          {/* サイドメニューバー関連のUI置くとこ */}
+          <div className="side-menu-space"></div>
+          {/* アイテム表示部分 */}
+          <div className="main-display-space"></div>
+        </div>
+        <div className="app-status-bar"></div>
+      </AppStateProvider>
     </AppSettingProvider>
-  )
+  );
 }
 
 export default App;
