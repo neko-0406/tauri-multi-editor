@@ -2,6 +2,8 @@ html,
 body {
   margin: 0;
   padding: 0;
+  height: 100%;
+  width: 100%;
 }
 
 #root {
@@ -9,5 +11,15 @@ body {
   margin: 0;
   padding: 0;
   height: 100%;
+  width: 100%;
+}
+
+.main-container {
+  height: calc(100% - 20px);
+  width: 100%;
+}
+
+.app-status-bar {
+  height: 20px;
   width: 100%;
 }

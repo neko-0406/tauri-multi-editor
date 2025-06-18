@@ -6,7 +6,15 @@ import { AppSettingProvider } from './components/AppSetting/SettingProvider';
 function App() {
   return (
     <AppSettingProvider>
-      <div className=''></div>
+      <div className='main-container'>
+        {/* サイドメニューバー */}
+        <div className='side-menu-bar'></div>
+        {/* サイドメニューバー関連のUI置くとこ */}
+        <div className='side-menu-space'></div>
+        {/* アイテム表示部分 */}
+        <div className='main-display-space'></div>
+      </div>
+      <div className='app-status-bar'></div>
     </AppSettingProvider>
   )
 }
