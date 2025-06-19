@@ -1,11 +1,12 @@
 import React, { createContext, useContext, useState } from 'react';
+import { MemoCardInfo } from '../MemoCard';
 
 export type AppStateType = {
-    openWorkspace: string
+    memoCardInfos: MemoCardInfo[]
 };
 
 const defaultAppSetting: AppStateType = {
-    openWorkspace: ''
+    memoCardInfos: []
 };
 
 const AppStateContext = createContext<{
