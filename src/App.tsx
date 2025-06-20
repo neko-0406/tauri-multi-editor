@@ -10,7 +10,7 @@ function App() {
         <div className="main-container">
           {/* サイドメニューバー */}
           <div className="side-menu-bar"></div>
-          {/* サイドメニューバー関連のUI置くとこ */}
+          {/* サイドメニューバー関連のUI置くとこ・基本閉じる*/}
           <SideMenuSpace />
           {/* アイテム表示部分 */}
           <div className="main-display-space"></div>
