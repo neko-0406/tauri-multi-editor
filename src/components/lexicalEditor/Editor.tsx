@@ -6,14 +6,14 @@ import { HistoryPlugin } from "@lexical/react/LexicalHistoryPlugin";
 import { RichTextPlugin } from "@lexical/react/LexicalRichTextPlugin";
 import { EditorState } from "lexical";
 
-const thme = {} // 後で別ファイルに分離
+const theme = {} // 後で別ファイルに分離
 function onError(error: any) {
   console.log(error);
 } 
 export default function Editor(editorState: EditorState) {
   const initialConfig = {
     namespace: 'editor',
-    thme,
+    theme,
     onError,
     editorState
   }
