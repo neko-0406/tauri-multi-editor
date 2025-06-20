@@ -6,7 +6,7 @@ export default function SideMenuSpace() {
   const { appState } = useAppState();
   const [spaceWidth, setSpaceWidth] = useState<number>(appState.sideMenuSpaceWidth);
   return (
-    <div className="side-menu-space" style={{ width: spaceWidth }}>
+    <div className="side-menu-space" style={{ width: `${spaceWidth}px` }}>
       <SideMenuSplitter updateElementWidth={setSpaceWidth} />
     </div>
   );

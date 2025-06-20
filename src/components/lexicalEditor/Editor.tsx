@@ -31,7 +31,7 @@ export default function Editor(editorState: EditorState) {
     editorState,
   };
 
-  const onChangeHandler = () => {}
+  const onChangeHandler = () => {};
 
   return (
     <LexicalComposer initialConfig={initialConfig}>
