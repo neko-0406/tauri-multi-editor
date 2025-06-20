@@ -77,13 +77,7 @@ const editorTheme: EditorThemeClasses = {
     nested: {
       listitem: 'EditorTheme-nestedListItem',
     },
-    olDepth: [
-      'EditorTheme-ol1',
-      'EditorTheme-ol2',
-      'EditorTheme-ol3',
-      'EditorTheme-ol4',
-      'EditorTheme-ol5',
-    ],
+    olDepth: ['EditorTheme-ol1', 'EditorTheme-ol2', 'EditorTheme-ol3', 'EditorTheme-ol4', 'EditorTheme-ol5'],
     ul: 'EditorTheme-ul',
   },
   ltr: 'EditorTheme-ltr',

@@ -11,21 +11,21 @@ import { HeadingNode, QuoteNode } from '@lexical/rich-text';
 import { TableCellNode, TableNode, TableRowNode } from '@lexical/table';
 
 const editorNodes: Array<Klass<LexicalNode>> = [
-    CodeHighlightNode,
-    CodeNode,
-    HashtagNode,
-    AutoLinkNode,
-    LinkNode,
-    ListItemNode,
-    ListNode,
-    MarkNode,
-    OverflowNode,
-    HorizontalRuleNode,
-    HeadingNode,
-    QuoteNode,
-    TableCellNode,
-    TableNode,
-    TableRowNode
+  CodeHighlightNode,
+  CodeNode,
+  HashtagNode,
+  AutoLinkNode,
+  LinkNode,
+  ListItemNode,
+  ListNode,
+  MarkNode,
+  OverflowNode,
+  HorizontalRuleNode,
+  HeadingNode,
+  QuoteNode,
+  TableCellNode,
+  TableNode,
+  TableRowNode,
 ];
 
 export default editorNodes;
