@@ -1,0 +1,12 @@
+.side-menu-splitter {
+    height: 100%;
+    width: 5px;
+    position: absolute;
+    right: 0;
+    z-index: 1000;
+}
+
+.side-menu-splitter:hover {
+    background-color: cyan;
+    cursor: w-resize;
+}
