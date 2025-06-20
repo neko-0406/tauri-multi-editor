@@ -10,7 +10,7 @@ import type { EditorThemeClasses } from 'lexical';
 
 import '../../styles/EditorTheme.css';
 
-const theme: EditorThemeClasses = {
+const editorTheme: EditorThemeClasses = {
   autocomplete: 'EditorTheme-autocomplete',
   blockCursor: 'EditorTheme-blockCursor',
   characterLimit: 'EditorTheme-characterLimit',
@@ -129,4 +129,4 @@ const theme: EditorThemeClasses = {
   },
 };
 
-export default theme;
+export default editorTheme;

@@ -6,14 +6,17 @@ import { HistoryPlugin } from "@lexical/react/LexicalHistoryPlugin";
 import { RichTextPlugin } from "@lexical/react/LexicalRichTextPlugin";
 import { EditorState } from "lexical";
 
-const theme = {} // 後で別ファイルに分離
+import editorTheme from "./EditorTheme";
+import editorNodes from "./EditorNode";
+
 function onError(error: any) {
   console.log(error);
 } 
 export default function Editor(editorState: EditorState) {
   const initialConfig = {
     namespace: 'editor',
-    theme,
+    nodes: editorNodes,
+    editorTheme,
     onError,
     editorState
   }
