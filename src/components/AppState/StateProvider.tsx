@@ -2,10 +2,12 @@ import React, { createContext, useContext, useState } from 'react';
 
 export type AppStateType = {
     openWorkspace: string
+    sideMenuSpaceWidth: number
 };
 
 const defaultAppSetting: AppStateType = {
-    openWorkspace: ''
+    openWorkspace: '',
+    sideMenuSpaceWidth: 100
 };
 
 const AppStateContext = createContext<{
@@ -22,4 +24,4 @@ export const AppStateProvider = ({ children }: { children: React.ReactNode }): J
   return <AppStateContext.Provider value={{ appState, setAppState }}>{children}</AppStateContext.Provider>;
 };
 
-export const useAppSettings = () => useContext(AppStateContext);
+export const useAppState = () => useContext(AppStateContext);

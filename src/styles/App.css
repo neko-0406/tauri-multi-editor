@@ -31,6 +31,7 @@ body {
   height: 100%;
   width: 50px;
   background-color: #efefef;
+  position: relative;
 }
 
 .main-display-space {
