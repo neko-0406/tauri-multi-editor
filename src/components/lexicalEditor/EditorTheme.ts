@@ -8,7 +8,7 @@
 
 import type { EditorThemeClasses } from 'lexical';
 
-import './EditorTheme.css';
+import '../../styles/EditorTheme.css';
 
 const theme: EditorThemeClasses = {
   autocomplete: 'EditorTheme-autocomplete',
