@@ -1,13 +1,13 @@
 import React, { createContext, useContext, useState } from 'react';
 
 export type AppStateType = {
-    openWorkspace: string
-    sideMenuSpaceWidth: number
+  openWorkspace: string;
+  sideMenuSpaceWidth: number;
 };
 
 const defaultAppSetting: AppStateType = {
-    openWorkspace: '',
-    sideMenuSpaceWidth: 100
+  openWorkspace: '',
+  sideMenuSpaceWidth: 100,
 };
 
 const AppStateContext = createContext<{

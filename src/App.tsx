@@ -3,8 +3,6 @@ import { AppSettingProvider } from './components/AppSetting/SettingProvider';
 import { AppStateProvider } from './components/AppState/StateProvider';
 import SideMenuSpace from './components/SideMenuSpace';
 
-
-
 function App() {
   return (
     <AppSettingProvider>
@@ -14,7 +12,6 @@ function App() {
           <div className="side-menu-bar"></div>
           {/* サイドメニューバー関連のUI置くとこ */}
           <SideMenuSpace />
-          
           {/* アイテム表示部分 */}
           <div className="main-display-space"></div>
         </div>

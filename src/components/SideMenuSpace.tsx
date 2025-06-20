@@ -1,15 +1,13 @@
-import { useState } from "react";
-import SideMenuSplitter from "./SideMenuSplitter";
-import { useAppState } from "./AppState/StateProvider";
+import { useState } from 'react';
+import SideMenuSplitter from './SideMenuSplitter';
+import { useAppState } from './AppState/StateProvider';
 
 export default function SideMenuSpace() {
-    const { appState } = useAppState()
-    const [spaceWidth, setSpaceWidth] = useState<number>(appState.sideMenuSpaceWidth)
-    return (
-      <div className="side-menu-space"
-        style={{width: spaceWidth}}
-      >
-        <SideMenuSplitter updateElementWidth={setSpaceWidth} />
-      </div>
-    );
+  const { appState } = useAppState();
+  const [spaceWidth, setSpaceWidth] = useState<number>(appState.sideMenuSpaceWidth);
+  return (
+    <div className="side-menu-space" style={{ width: spaceWidth }}>
+      <SideMenuSplitter updateElementWidth={setSpaceWidth} />
+    </div>
+  );
 }
