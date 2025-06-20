@@ -28,4 +28,4 @@ const editorNodes: Array<Klass<LexicalNode>> = [
     TableRowNode
 ];
 
-export { editorNodes };
+export default editorNodes;
