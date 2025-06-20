@@ -2,7 +2,9 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnPaste": true,
     "cSpell.words": [
+        "atrule",
         "momi",
+        "Resizer",
         "tauri"
     ]
 }
