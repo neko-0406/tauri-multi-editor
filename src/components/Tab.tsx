@@ -1,5 +1,11 @@
-type TabProps = {};
+import { ReactNode } from 'react';
 
-export default function Tab() {
+type TabProps = {
+  children?: ReactNode;
+};
+
+export function TabContainer({ children }) {
   return <div></div>;
 }
+
+export function TabItem();
