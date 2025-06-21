@@ -1,0 +1,16 @@
+.tab-space {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.tab-tag-container {
+  height: 40px;
+  width: 100%;
+}
+
+.tab-display-space {
+  height: 100%;
+  width: 100%;
+}
