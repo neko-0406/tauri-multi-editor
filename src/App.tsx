@@ -4,15 +4,26 @@ import { AppStateProvider } from './components/AppState/StateProvider';
 import SideMenuSpace from './components/SideMenuSpace';
 import { TabContainer, TabItemData } from './components/Tabs';
 
-const tabData: TabItemData = {
-  id: 'test-1',
-  title: 'test-title',
-  components: {
-    type: 'md',
-    value: '# テストだぜ',
-    path: './test.md',
+const tabData: TabItemData[] = [
+  {
+    id: 'test-1',
+    title: 'test-title1',
+    components: {
+      type: 'md',
+      value: '# テスト1だぜ',
+      path: './test.md',
+    },
   },
-};
+  {
+    id: 'test-2',
+    title: 'test-title2',
+    components: {
+      type: 'md',
+      value: '# テスト2だぜ',
+      path: './test.md',
+    },
+  },
+];
 
 function App() {
   return (
@@ -25,7 +36,7 @@ function App() {
           <SideMenuSpace />
           {/* アイテム表示部分 */}
           <div className="main-display-space">
-            <TabContainer tabItems={[tabData]} />
+            <TabContainer tabItems={tabData} />
           </div>
         </div>
         <div className="app-status-bar"></div>
