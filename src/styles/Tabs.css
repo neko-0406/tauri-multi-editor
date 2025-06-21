@@ -8,6 +8,18 @@
 .tab-tag-container {
   height: 40px;
   width: 100%;
+  background-color: #a9a9a9;
+  display: flex;
+  flex-direction: row;
+}
+
+.tab-item-tag {
+  background-color: white;
+  height: 100%;
+  padding: 0 10px 0 10px;
+  display: flex;
+  align-items: center;
+  user-select: none;
 }
 
 .tab-display-space {
