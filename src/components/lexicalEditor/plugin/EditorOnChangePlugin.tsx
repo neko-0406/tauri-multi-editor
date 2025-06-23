@@ -7,7 +7,7 @@ type EditorOnChangePluginProps = {
 };
 
 export default function EditorOnChangePlugin({ onEditorStateChange }: EditorOnChangePluginProps) {
-  const [editor] = useLexicalComposerContext();
+  const [_editor] = useLexicalComposerContext();
 
   return <OnChangePlugin onChange={onEditorStateChange} />;
 }
