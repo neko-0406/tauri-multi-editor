@@ -23,6 +23,7 @@ import EditorOnChangePlugin from './plugin/EditorOnChangePlugin';
 function onError(error: any) {
   console.log(error);
 }
+
 export default function Editor(editorState: EditorState) {
   const initialConfig = {
     namespace: 'editor',
@@ -56,3 +57,4 @@ export default function Editor(editorState: EditorState) {
     </LexicalComposer>
   );
 }
+
