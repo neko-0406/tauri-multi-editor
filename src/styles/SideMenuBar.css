@@ -2,15 +2,24 @@
   width: 100%;
   height: 100%;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 }
 
 .side-menu-top-icon-container {
   width: 100%;
-  height: 80;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
 }
 
 .side-menu-bottom-icon-container {
   width: 100%;
   height: 20%;
+  display: flex;
+  flex-direction: column;
+}
+
+.side-menu-button-icon {
+    border: none;
+    background: none;
 }
