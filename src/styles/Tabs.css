@@ -20,6 +20,11 @@
   display: flex;
   align-items: center;
   user-select: none;
+  border-right: 2px solid black;
+}
+
+.tab-item-tag:not(:first-child) {
+  border-right: none;
 }
 
 .tab-item-tag-title-space {
