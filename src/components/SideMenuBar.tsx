@@ -17,7 +17,7 @@ export default function SideMenuBar({ sideMenuItems }: SideMenuBarProps) {
       {/* 設定などを入れるとこ */}
       <div className="side-menu-bottom-icon-container">
         {sideMenuItems.map((item) => (
-          <SideMenuItemIcom label={item.label} icon={item.icon} click={item.click} />
+          <SideMenuItemIcom icon={item.icon} click={item.click} />
         ))}
       </div>
     </div>
