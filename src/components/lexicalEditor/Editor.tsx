@@ -17,6 +17,7 @@ import { TabIndentationPlugin } from '@lexical/react/LexicalTabIndentationPlugin
 import { TablePlugin } from '@lexical/react/LexicalTablePlugin';
 import { LinkPlugin } from '@lexical/react/LexicalLinkPlugin';
 import { CheckListPlugin } from '@lexical/react/LexicalCheckListPlugin';
+import { MarkdownShortcutPlugin } from '@lexical/react/LexicalMarkdownShortcutPlugin';
 import EditorOnChangePlugin from './plugin/EditorOnChangePlugin';
 
 function onError(error: any) {
@@ -50,6 +51,7 @@ export default function Editor(editorState: EditorState) {
       <TablePlugin hasCellMerge={true} hasCellBackgroundColor={true} hasHorizontalScroll={true} />
       <LinkPlugin />
       <CheckListPlugin />
+      <MarkdownShortcutPlugin />
       <EditorOnChangePlugin onEditorStateChange={onChangeHandler} />
     </LexicalComposer>
   );
