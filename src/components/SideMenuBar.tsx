@@ -1,7 +1,6 @@
 import '../styles/SideMenuBar.css';
 
 export type SideMenuItem = {
-  label: string;
   icon: JSX.Element;
   click: () => void;
 };
@@ -25,7 +24,7 @@ export default function SideMenuBar({ sideMenuItems }: SideMenuBarProps) {
   );
 }
 
-export function SideMenuItemIcom({ label, icon, click }: SideMenuItem) {
+export function SideMenuItemIcom({ icon, click }: SideMenuItem) {
   return (
     <button className="side-menu-button-icon" type="button" onClick={click}>
       {icon}
