@@ -7,8 +7,8 @@ export type SideMenuItem = {
 };
 
 type SideMenuBarProps = {
-  sideMenuItems: SideMenuItem[]
-}
+  sideMenuItems: SideMenuItem[];
+};
 
 export default function SideMenuBar({ sideMenuItems }: SideMenuBarProps) {
   return (
