@@ -3,6 +3,7 @@ import { AppSettingProvider } from './components/AppSetting/SettingProvider';
 import { AppStateProvider } from './components/AppState/StateProvider';
 import SideMenuSpace from './components/SideMenuSpace';
 import { TabContainer, TabItemData } from './components/Tabs';
+import SideMenuBar from './components/SideMenuBar';
 
 const tabData: TabItemData[] = [
   {
@@ -31,7 +32,9 @@ function App() {
       <AppStateProvider>
         <div className="main-container">
           {/* サイドメニューバー */}
-          <div className="side-menu-bar"></div>
+          <div className="side-menu-bar">
+            <SideMenuBar />
+          </div>
           {/* サイドメニューバー関連のUI置くとこ・基本閉じる*/}
           <SideMenuSpace />
           {/* アイテム表示部分 */}
