@@ -1,6 +1,7 @@
 import { useCallback, useState } from 'react';
 import { FaXmark } from 'react-icons/fa6';
 import '../styles/Tabs.css';
+import { findTabById } from '../utils/tabUtils';
 
 export type TabItemData = {
   id: string;
@@ -79,7 +80,7 @@ export function TabContainer({ tabItems }: TabContainerProps) {
         <TabItemTags tabItems={tabItems} selectedId={selectedId} updateSelectedId={setSelectedId} />
       </div>
       {/* 選択されたタブの内容を表示するところ */}
-      <div className="tab-display-space">{tabItems.find((item) => selectedId === item.id)?.components.value}</div>
+      <div className="tab-display-space">{findTabById(tabItems, selectedId)?.components.value}</div>
     </div>
   );
 }
