@@ -1,0 +1,16 @@
+.side-menu-bar-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.side-menu-top-icon-container {
+    width: 100%;
+    height: 80;
+}
+
+.side-menu-bottom-icon-container {
+    width: 100%;
+    height: 20%;
+}
