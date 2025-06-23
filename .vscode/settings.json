@@ -6,6 +6,7 @@
         "Klass",
         "momi",
         "Resizer",
-        "tauri"
+        "tauri",
+        "Xmark"
     ]
 }
