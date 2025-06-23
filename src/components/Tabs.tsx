@@ -2,14 +2,18 @@ import { useCallback, useState } from 'react';
 import { FaXmark } from 'react-icons/fa6';
 import '../styles/Tabs.css';
 
+export type FileType = "md" | "txt" | "image" | "svg";
+
+export type components = {
+  type: FileType;
+  value: string;
+  path: string
+}
+
 export type TabItemData = {
   id: string;
   title: string;
-  components: {
-    type: string;
-    value: string;
-    path: string;
-  };
+  components: components
 };
 
 // TabItemの引数
@@ -30,6 +34,14 @@ type TabItemTagsProps = {
 type TabContainerProps = {
   tabItems: TabItemData[];
 };
+
+function setupComponentValue(tabItemData: TabItemData) {
+  const fileType: FileType = tabItemData.components.type
+  if (fileType === "md") {}
+  else if (fileType === "txt") {}
+  else if (fileType === "image") {}
+  else if (fileType === "svg") {}
+}
 
 export function TabItem({ tabItemData, selectedId, updateSelectedId }: TabItemProps) {
   const [isHover, setIsHover] = useState<boolean>(false);
