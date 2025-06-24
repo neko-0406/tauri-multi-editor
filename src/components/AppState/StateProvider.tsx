@@ -44,9 +44,10 @@ const AppStateContext = createContext<{
 
 export const AppStateProvider = ({ children }: { children: React.ReactNode }): JSX.Element => {
   const [appState, setAppState] = useState<AppStateType>(defaultAppSetting);
-  
+
+  // デモデータで内容を初期化
   useEffect(() => {
-    setAppState(state => ({ ...state, openFiles: filesData }));
+    setAppState((state) => ({ ...state, openFiles: filesData }));
   }, []);
 
   return <AppStateContext.Provider value={{ appState, setAppState }}>{children}</AppStateContext.Provider>;

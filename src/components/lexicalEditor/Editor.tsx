@@ -24,7 +24,6 @@ function onError(error: any) {
 }
 
 export default function Editor() {
-
   const initialConfig = {
     namespace: 'editor',
     nodes: editorNodes,

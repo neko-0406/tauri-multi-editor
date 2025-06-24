@@ -61,7 +61,7 @@ export function TabItem({ fileItemData, selectedId, updateSelectedId }: TabItemP
 }
 
 export function TabItemTags({ selectedId, updateSelectedId }: TabItemTagsProps) {
-  const { appState } = useAppState()
+  const { appState } = useAppState();
 
   return appState.openFiles.map((item) => (
     <TabItem key={item.id} fileItemData={item} selectedId={selectedId} updateSelectedId={updateSelectedId} />
@@ -80,9 +80,7 @@ export function TabContainer() {
       </div>
       {/* 選択されたタブの内容を表示するところ */}
       <div className="tab-display-space">
-        {
-          appState.openFiles.find((item) => item.id === selectedId)?.components.path
-        }
+        {appState.openFiles.find((item) => item.id === selectedId)?.components.path}
       </div>
     </div>
   );
