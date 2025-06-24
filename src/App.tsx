@@ -2,7 +2,7 @@ import './styles/App.css';
 import { AppSettingProvider } from './components/AppSetting/SettingProvider';
 import { AppStateProvider } from './components/AppState/StateProvider';
 import SideMenuSpace from './components/SideMenuSpace';
-import { TabContainer, TabItemData } from './components/Tabs';
+import { TabContainer } from './components/Tabs';
 import SideMenuBar, { SideMenuItem } from './components/SideMenuBar';
 import { FaGear } from 'react-icons/fa6';
 
@@ -11,25 +11,6 @@ const demoData: SideMenuItem = {
   icon: <FaGear size={30} />,
   click: () => console.log('gear!!'),
 };
-
-const tabData: TabItemData[] = [
-  {
-    id: 'test-1',
-    title: 'test-title1',
-    components: {
-      type: 'md',
-      path: './test.md',
-    },
-  },
-  {
-    id: 'test-2',
-    title: 'test-title2',
-    components: {
-      type: 'md',
-      path: './test.md',
-    },
-  },
-];
 
 function App() {
   return (
@@ -44,7 +25,7 @@ function App() {
           <SideMenuSpace />
           {/* アイテム表示部分 */}
           <div className="main-display-space">
-            <TabContainer tabItems={tabData} />
+            <TabContainer />
           </div>
         </div>
         <div className="app-status-bar"></div>
