@@ -1,9 +1,9 @@
 import React, { createContext, useContext, useState } from 'react';
-import { TabItemData } from '../Tabs';
+import { FileItemData } from '../Tabs';
 
 export type AppStateType = {
   openWorkspace: string;
-  openFiles: TabItemData[];
+  openFiles: FileItemData[];
   sideMenuSpaceWidth: number;
 };
 

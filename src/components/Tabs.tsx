@@ -11,7 +11,7 @@ export type components = {
   path: string;
 };
 
-export type TabItemData = {
+export type FileItemData = {
   id: string;
   title: string;
   components: components;
@@ -19,29 +19,29 @@ export type TabItemData = {
 
 // TabItemの引数
 type TabItemProps = {
-  tabItemData: TabItemData;
+  fileItemData: FileItemData;
   selectedId: string | null;
   updateSelectedId: React.Dispatch<React.SetStateAction<string | null>>;
 };
 
 // TabItemTagsの引数
 type TabItemTagsProps = {
-  tabItems: TabItemData[];
+  tabItems: FileItemData[];
   selectedId: string | null;
   updateSelectedId: React.Dispatch<React.SetStateAction<string | null>>;
 };
 
 // TabItemValueの引数
 type TabItemValueProps = {
-  tabItem: TabItemData | undefined;
+  tabItem: FileItemData | undefined;
 };
 
 // TabContainerの引数
 type TabContainerProps = {
-  tabItems: TabItemData[];
+  tabItems: FileItemData[];
 };
 
-export function TabItem({ tabItemData, selectedId, updateSelectedId }: TabItemProps) {
+export function TabItem({ fileItemData, selectedId, updateSelectedId }: TabItemProps) {
   const [isHover, setIsHover] = useState<boolean>(false);
 
   const handleMouseEnter = useCallback(() => {
@@ -55,12 +55,12 @@ export function TabItem({ tabItemData, selectedId, updateSelectedId }: TabItemPr
   return (
     <div
       className="tab-item-tag"
-      style={{ backgroundColor: selectedId === tabItemData.id ? 'white' : '#dcdcdc' }}
-      onClick={() => updateSelectedId(tabItemData.id)}
+      style={{ backgroundColor: selectedId === fileItemData.id ? 'white' : '#dcdcdc' }}
+      onClick={() => updateSelectedId(fileItemData.id)}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <div className="tab-item-tag-title-space">{tabItemData.title}</div>
+      <div className="tab-item-tag-title-space">{fileItemData.title}</div>
       <div className="tab-item-tag-icon-space">
         {isHover ? (
           <button type="button" className="tab-item-tag-remove">
@@ -74,7 +74,7 @@ export function TabItem({ tabItemData, selectedId, updateSelectedId }: TabItemPr
 
 export function TabItemTags({ tabItems, selectedId, updateSelectedId }: TabItemTagsProps) {
   return tabItems.map((item) => (
-    <TabItem key={item.id} tabItemData={item} selectedId={selectedId} updateSelectedId={updateSelectedId} />
+    <TabItem key={item.id} fileItemData={item} selectedId={selectedId} updateSelectedId={updateSelectedId} />
   ));
 }
 
