@@ -1,23 +1,29 @@
 import '../styles/SideMenuBar.css';
 
 export type SideMenuItem = {
+  id: string;
   icon: JSX.Element;
   click: () => void;
 };
 
 type SideMenuBarProps = {
-  sideMenuItems: SideMenuItem[];
+  sideMenuTopItems?: SideMenuItem[];
+  sideMenuBottomItems?: SideMenuItem[];
 };
 
-export default function SideMenuBar({ sideMenuItems }: SideMenuBarProps) {
+export default function SideMenuBar({ sideMenuTopItems, sideMenuBottomItems }: SideMenuBarProps) {
   return (
     <div className="side-menu-bar-container">
       {/* 検索などを入れるところ */}
-      <div className="side-menu-top-icon-container"></div>
+      <div className="side-menu-top-icon-container">
+      {sideMenuTopItems?.map((item) => (
+          <SideMenuItemIcom id={item.id} icon={item.icon} click={item.click} />
+        ))}
+      </div>
       {/* 設定などを入れるとこ */}
       <div className="side-menu-bottom-icon-container">
-        {sideMenuItems.map((item) => (
-          <SideMenuItemIcom icon={item.icon} click={item.click} />
+        {sideMenuBottomItems?.map((item) => (
+          <SideMenuItemIcom id={item.id} icon={item.icon} click={item.click} />
         ))}
       </div>
     </div>
