@@ -4,18 +4,18 @@ import '../styles/Tabs.css';
 import Editor from './lexicalEditor/Editor';
 import { EditorState } from 'lexical';
 
-export type FileType = "md" | "txt" | "image" | "svg";
+export type FileType = 'md' | 'txt' | 'image' | 'svg';
 
 export type components = {
   type: FileType;
   value: string | EditorState;
-  path: string
-}
+  path: string;
+};
 
 export type TabItemData = {
   id: string;
   title: string;
-  components: components
+  components: components;
 };
 
 // TabItemの引数
@@ -34,8 +34,8 @@ type TabItemTagsProps = {
 
 // TabItemValueの引数
 type TabItemValueProps = {
-  tabItem: TabItemData | undefined
-}
+  tabItem: TabItemData | undefined;
+};
 
 // TabContainerの引数
 type TabContainerProps = {
@@ -55,7 +55,6 @@ export function TabItem({ tabItemData, selectedId, updateSelectedId }: TabItemPr
 
   return (
     <div
-      key={tabItemData.id}
       className="tab-item-tag"
       style={{ backgroundColor: selectedId === tabItemData.id ? 'white' : '#dcdcdc' }}
       onClick={() => updateSelectedId(tabItemData.id)}
@@ -76,16 +75,20 @@ export function TabItem({ tabItemData, selectedId, updateSelectedId }: TabItemPr
 
 export function TabItemTags({ tabItems, selectedId, updateSelectedId }: TabItemTagsProps) {
   return tabItems.map((item) => (
-    <TabItem tabItemData={item} selectedId={selectedId} updateSelectedId={updateSelectedId} />
+    <TabItem key={item.id} tabItemData={item} selectedId={selectedId} updateSelectedId={updateSelectedId} />
   ));
 }
 
 export function TabItemValue({ tabItem }: TabItemValueProps) {
   if (tabItem === undefined) return null;
-  else if (tabItem.components.type === "md") {
-    return(
-      <Editor editorState={(tabItem.components.value as EditorState)} />
-    )
+  else if (tabItem.components.type === 'md') {
+    return <Editor editorState={tabItem.components.value as EditorState} />;
+  } else if (tabItem.components.type === 'txt') {
+    return <textarea readOnly value={tabItem.components.value as string}></textarea>;
+  } else if (tabItem.components.type === 'image') {
+    return null;
+  } else if (tabItem.components.type === 'svg') {
+    return null;
   }
 }
 
@@ -99,7 +102,9 @@ export function TabContainer({ tabItems }: TabContainerProps) {
         <TabItemTags tabItems={tabItems} selectedId={selectedId} updateSelectedId={setSelectedId} />
       </div>
       {/* 選択されたタブの内容を表示するところ */}
-      <div className="tab-display-space"><TabItemValue tabItem={tabItems.find((item) => selectedId === item.id)} /> </div>
+      <div className="tab-display-space">
+        <TabItemValue tabItem={tabItems.find((item) => selectedId === item.id)} />{' '}
+      </div>
     </div>
   );
 }
