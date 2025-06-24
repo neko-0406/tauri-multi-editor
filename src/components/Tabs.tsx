@@ -2,6 +2,7 @@ import { useCallback, useState } from 'react';
 import { FaXmark } from 'react-icons/fa6';
 import '../styles/Tabs.css';
 import { useAppState } from './AppState/StateProvider';
+import Editor from './lexicalEditor/Editor';
 
 export type FileType = 'md' | 'txt' | 'image' | 'svg';
 
@@ -28,6 +29,10 @@ type TabItemTagsProps = {
   selectedId: string | null;
   updateSelectedId: React.Dispatch<React.SetStateAction<string | null>>;
 };
+
+type TabItemValueProps = {
+  selectedId: string
+}
 
 export function TabItem({ fileItemData, selectedId, updateSelectedId }: TabItemProps) {
   const [isHover, setIsHover] = useState<boolean>(false);
@@ -66,6 +71,21 @@ export function TabItemTags({ selectedId, updateSelectedId }: TabItemTagsProps) 
   return appState.openFiles.map((item) => (
     <TabItem key={item.id} fileItemData={item} selectedId={selectedId} updateSelectedId={updateSelectedId} />
   ));
+}
+
+function TabItemValue({ selectedId }: TabItemValueProps) {
+  const { appState } = useAppState();
+  const fileItemData: FileItemData|undefined = appState.openFiles.find((item) => item.id === selectedId)
+
+  if (fileItemData === undefined) return null;
+  
+  const fileType: string = fileItemData.components.type;
+  if (fileType === "md") {
+    return <Editor />
+  }
+  else if (fileType === "txt") return null;
+  else if (fileType === "image") return null;
+  else if (fileType === "svg") return null;
 }
 
 export function TabContainer() {

@@ -18,12 +18,17 @@ import { LinkPlugin } from '@lexical/react/LexicalLinkPlugin';
 import { CheckListPlugin } from '@lexical/react/LexicalCheckListPlugin';
 import { MarkdownShortcutPlugin } from '@lexical/react/LexicalMarkdownShortcutPlugin';
 import EditorOnChangePlugin from './plugin/EditorOnChangePlugin';
+import { FileItemData } from '../Tabs';
+
+type EditorProps = {
+  fileItem: FileItemData;
+}
 
 function onError(error: any) {
   console.log(error);
 }
 
-export default function Editor() {
+export default function Editor({ fileIte }: FileItemData) {
   const initialConfig = {
     namespace: 'editor',
     nodes: editorNodes,
