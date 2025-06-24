@@ -2,16 +2,14 @@ import { useCallback, useState } from 'react';
 import { FaXmark } from 'react-icons/fa6';
 import '../styles/Tabs.css';
 import Editor from './lexicalEditor/Editor';
-import { EditorState } from 'lexical';
+import { findTabById } from '../utils/tabUtils';
 
 export type FileType = 'md' | 'txt' | 'image' | 'svg';
 
 export type components = {
   type: FileType;
-  value: string | EditorState;
   path: string;
 };
-import { findTabById } from '../utils/tabUtils';
 
 export type TabItemData = {
   id: string;
@@ -83,9 +81,9 @@ export function TabItemTags({ tabItems, selectedId, updateSelectedId }: TabItemT
 export function TabItemValue({ tabItem }: TabItemValueProps) {
   if (tabItem === undefined) return null;
   else if (tabItem.components.type === 'md') {
-    return <Editor editorState={tabItem.components.value as EditorState} />;
+    return <Editor />;
   } else if (tabItem.components.type === 'txt') {
-    return <textarea readOnly value={tabItem.components.value as string}></textarea>;
+    return null;
   } else if (tabItem.components.type === 'image') {
     return null;
   } else if (tabItem.components.type === 'svg') {
