@@ -7,7 +7,7 @@ import SideMenuBar, { SideMenuItem } from './components/SideMenuBar';
 import { FaGear } from 'react-icons/fa6';
 
 const demoData: SideMenuItem = {
-  id: "",
+  id: '',
   icon: <FaGear size={30} />,
   click: () => console.log('gear!!'),
 };
