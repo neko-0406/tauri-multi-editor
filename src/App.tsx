@@ -18,7 +18,6 @@ const tabData: TabItemData[] = [
     title: 'test-title1',
     components: {
       type: 'md',
-      value: '# テスト1だぜ',
       path: './test.md',
     },
   },
@@ -27,7 +26,6 @@ const tabData: TabItemData[] = [
     title: 'test-title2',
     components: {
       type: 'md',
-      value: '# テスト2だぜ',
       path: './test.md',
     },
   },
