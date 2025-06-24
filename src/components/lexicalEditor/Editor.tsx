@@ -25,8 +25,8 @@ function onError(error: any) {
 }
 
 type EditorProps = {
-  editorState?: EditorState
-}
+  editorState?: EditorState;
+};
 
 export default function Editor({ editorState }: EditorProps) {
   const initialConfig = {
