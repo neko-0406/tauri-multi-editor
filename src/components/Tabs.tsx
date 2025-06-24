@@ -11,6 +11,7 @@ export type components = {
   value: string | EditorState;
   path: string;
 };
+import { findTabById } from '../utils/tabUtils';
 
 export type TabItemData = {
   id: string;
@@ -103,7 +104,7 @@ export function TabContainer({ tabItems }: TabContainerProps) {
       </div>
       {/* 選択されたタブの内容を表示するところ */}
       <div className="tab-display-space">
-        <TabItemValue tabItem={tabItems.find((item) => selectedId === item.id)} />{' '}
+        <TabItemValue tabItem={findTabById(tabItems, selectedId)} />
       </div>
     </div>
   );
