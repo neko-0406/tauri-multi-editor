@@ -1,13 +1,16 @@
 import React, { createContext, useContext, useState } from 'react';
+import { TabItemData } from '../Tabs';
 
 export type AppStateType = {
   openWorkspace: string;
+  openFiles: TabItemData[];
   sideMenuSpaceWidth: number;
 };
 
 const defaultAppSetting: AppStateType = {
   openWorkspace: '',
-  sideMenuSpaceWidth: 100,
+  openFiles: [],
+  sideMenuSpaceWidth: 0,
 };
 
 const AppStateContext = createContext<{
