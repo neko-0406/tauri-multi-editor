@@ -4,7 +4,6 @@ import { ContentEditable } from '@lexical/react/LexicalContentEditable';
 import { LexicalErrorBoundary } from '@lexical/react/LexicalErrorBoundary';
 import { HistoryPlugin } from '@lexical/react/LexicalHistoryPlugin';
 import { RichTextPlugin } from '@lexical/react/LexicalRichTextPlugin';
-import { EditorState } from 'lexical';
 
 import editorTheme from './EditorTheme';
 import editorNodes from './EditorNode';
@@ -24,17 +23,13 @@ function onError(error: any) {
   console.log(error);
 }
 
-type EditorProps = {
-  editorState?: EditorState;
-};
+export default function Editor() {
 
-export default function Editor({ editorState }: EditorProps) {
   const initialConfig = {
     namespace: 'editor',
     nodes: editorNodes,
     editorTheme,
     onError,
-    editorState,
   };
 
   const onChangeHandler = () => {};
