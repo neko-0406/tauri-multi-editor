@@ -1,12 +1,14 @@
 import { useCallback, useState } from 'react';
 import { FaXmark } from 'react-icons/fa6';
 import '../styles/Tabs.css';
+import Editor from './lexicalEditor/Editor';
+import { EditorState } from 'lexical';
 
 export type FileType = "md" | "txt" | "image" | "svg";
 
 export type components = {
   type: FileType;
-  value: string;
+  value: string | EditorState;
   path: string
 }
 
@@ -30,18 +32,15 @@ type TabItemTagsProps = {
   updateSelectedId: React.Dispatch<React.SetStateAction<string | null>>;
 };
 
+// TabItemValueの引数
+type TabItemValueProps = {
+  tabItem: TabItemData | undefined
+}
+
 // TabContainerの引数
 type TabContainerProps = {
   tabItems: TabItemData[];
 };
-
-function setupComponentValue(tabItemData: TabItemData) {
-  const fileType: FileType = tabItemData.components.type
-  if (fileType === "md") {}
-  else if (fileType === "txt") {}
-  else if (fileType === "image") {}
-  else if (fileType === "svg") {}
-}
 
 export function TabItem({ tabItemData, selectedId, updateSelectedId }: TabItemProps) {
   const [isHover, setIsHover] = useState<boolean>(false);
@@ -81,6 +80,15 @@ export function TabItemTags({ tabItems, selectedId, updateSelectedId }: TabItemT
   ));
 }
 
+export function TabItemValue({ tabItem }: TabItemValueProps) {
+  if (tabItem === undefined) return null;
+  else if (tabItem.components.type === "md") {
+    return(
+      <Editor editorState={(tabItem.components.value as EditorState)} />
+    )
+  }
+}
+
 export function TabContainer({ tabItems }: TabContainerProps) {
   const [selectedId, setSelectedId] = useState<string | null>(null);
 
@@ -91,7 +99,7 @@ export function TabContainer({ tabItems }: TabContainerProps) {
         <TabItemTags tabItems={tabItems} selectedId={selectedId} updateSelectedId={setSelectedId} />
       </div>
       {/* 選択されたタブの内容を表示するところ */}
-      <div className="tab-display-space">{tabItems.find((item) => selectedId === item.id)?.components.value}</div>
+      <div className="tab-display-space"><TabItemValue tabItem={tabItems.find((item) => selectedId === item.id)} /> </div>
     </div>
   );
 }
