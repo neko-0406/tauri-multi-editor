@@ -1,8 +1,7 @@
 import { useCallback, useState } from 'react';
 import { FaXmark } from 'react-icons/fa6';
 import '../styles/Tabs.css';
-import Editor from './lexicalEditor/Editor';
-import { findTabById } from '../utils/tabUtils';
+import { useAppState } from './AppState/StateProvider';
 
 export type FileType = 'md' | 'txt' | 'image' | 'svg';
 
@@ -26,19 +25,8 @@ type TabItemProps = {
 
 // TabItemTagsの引数
 type TabItemTagsProps = {
-  tabItems: FileItemData[];
   selectedId: string | null;
   updateSelectedId: React.Dispatch<React.SetStateAction<string | null>>;
-};
-
-// TabItemValueの引数
-type TabItemValueProps = {
-  tabItem: FileItemData | undefined;
-};
-
-// TabContainerの引数
-type TabContainerProps = {
-  tabItems: FileItemData[];
 };
 
 export function TabItem({ fileItemData, selectedId, updateSelectedId }: TabItemProps) {
@@ -72,37 +60,29 @@ export function TabItem({ fileItemData, selectedId, updateSelectedId }: TabItemP
   );
 }
 
-export function TabItemTags({ tabItems, selectedId, updateSelectedId }: TabItemTagsProps) {
-  return tabItems.map((item) => (
+export function TabItemTags({ selectedId, updateSelectedId }: TabItemTagsProps) {
+  const { appState } = useAppState()
+
+  return appState.openFiles.map((item) => (
     <TabItem key={item.id} fileItemData={item} selectedId={selectedId} updateSelectedId={updateSelectedId} />
   ));
 }
 
-export function TabItemValue({ tabItem }: TabItemValueProps) {
-  if (tabItem === undefined) return null;
-  else if (tabItem.components.type === 'md') {
-    return <Editor />;
-  } else if (tabItem.components.type === 'txt') {
-    return null;
-  } else if (tabItem.components.type === 'image') {
-    return null;
-  } else if (tabItem.components.type === 'svg') {
-    return null;
-  }
-}
-
-export function TabContainer({ tabItems }: TabContainerProps) {
+export function TabContainer() {
   const [selectedId, setSelectedId] = useState<string | null>(null);
+  const { appState } = useAppState();
 
   return (
     <div className="tab-space">
       {/* タブのタグ部分を置くところ */}
       <div className="tab-tag-container">
-        <TabItemTags tabItems={tabItems} selectedId={selectedId} updateSelectedId={setSelectedId} />
+        <TabItemTags selectedId={selectedId} updateSelectedId={setSelectedId} />
       </div>
       {/* 選択されたタブの内容を表示するところ */}
       <div className="tab-display-space">
-        <TabItemValue tabItem={findTabById(tabItems, selectedId)} />
+        {
+          appState.openFiles.find((item) => item.id === selectedId)?.components.path
+        }
       </div>
     </div>
   );
