@@ -24,7 +24,11 @@ function onError(error: any) {
   console.log(error);
 }
 
-export default function Editor(editorState: EditorState) {
+type EditorProps = {
+  editorState?: EditorState
+}
+
+export default function Editor({ editorState }: EditorProps) {
   const initialConfig = {
     namespace: 'editor',
     nodes: editorNodes,
