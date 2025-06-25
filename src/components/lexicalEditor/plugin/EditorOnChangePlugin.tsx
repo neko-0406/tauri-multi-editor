@@ -16,6 +16,7 @@ export default function EditorOnChangePlugin({ fileItem }: EditorOnChangePluginP
   const [editor] = useLexicalComposerContext();
   const { appState, setAppState } = useAppState();
   const autSaveRef = useRef<boolean>(useAppSettings().settings.autoSave);
+  const autoSaveTimerRef = useRef<number>();
 
   const saveEditorChange = useCallback((editorState: EditorState) => {
     const markdown = editor.read(() => {
@@ -39,10 +40,14 @@ export default function EditorOnChangePlugin({ fileItem }: EditorOnChangePluginP
 
     if (autSaveRef.current) {
       // auto saveが有効な時
+      clearTimeout(autoSaveTimerRef.current);
+      autoSaveTimerRef.current = setTimeout(() => {
+        saveToFile(fileItem.components.path, content);
+      }, 3000);
     } else {
       // auto saveが無効な時
     }
-  }, []);
+  }, [fileItem.id, setAppState]);
 
   return <OnChangePlugin onChange={saveEditorChange} />;
 }
