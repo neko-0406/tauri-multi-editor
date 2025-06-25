@@ -1,27 +1,24 @@
-import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext';
 import { OnChangePlugin } from '@lexical/react/LexicalOnChangePlugin';
-import { useAppSettings } from '../../AppSetting/SettingProvider';
-import { FileItemData, components } from '../../Tabs';
+import { FileItemData } from '../../Tabs';
 import { useCallback, useRef } from 'react';
-import { EditorState } from 'lexical';
-import { useAppState } from '../../AppState/StateProvider';
 
 import { $convertToMarkdownString, TRANSFORMERS } from '@lexical/markdown';
+import { EditorState } from 'lexical';
+import { useAppState } from '../../AppState/StateProvider';
+import { useAppSettings } from '../../AppSetting/SettingProvider';
 
 type EditorOnChangePluginProps = {
   fileItem: FileItemData;
 };
 
 export default function EditorOnChangePlugin({ fileItem }: EditorOnChangePluginProps) {
-  const [editor] = useLexicalComposerContext();
-  const { appState, setAppState } = useAppState();
-  const autSaveRef = useRef<boolean>(useAppSettings().settings.autoSave);
-  const autoSaveTimerRef = useRef<number>();
+  const { setAppState } = useAppState();
+  const { settings } = useAppSettings();
 
-  const saveEditorChange = useCallback((editorState: EditorState) => {
-    const markdown = editor.read(() => {
-      return $convertToMarkdownString(TRANSFORMERS);
-    });
+  const changeCallback = useCallback((editorState: EditorState) => {
+    const markdown = editorState.read(() => {
+      return $convertToMarkdownString(TRANSFORMERS)
+    })
 
     setAppState((preState) => ({
       ...preState,
@@ -37,17 +34,14 @@ export default function EditorOnChangePlugin({ fileItem }: EditorOnChangePluginP
           : file
       ),
     }));
-
-    if (autSaveRef.current) {
-      // auto saveが有効な時
-      clearTimeout(autoSaveTimerRef.current);
-      autoSaveTimerRef.current = setTimeout(() => {
-        saveToFile(fileItem.components.path, content);
-      }, 3000);
-    } else {
-      // auto saveが無効な時
-    }
   }, [fileItem.id, setAppState]);
 
-  return <OnChangePlugin onChange={saveEditorChange} />;
+  if (settings.autoSave) { // 自動保存が有効
+    
+  }
+  else { // 自動保存が無効
+
+  }
+
+  return <OnChangePlugin onChange={changeCallback} />;
 }
