@@ -21,6 +21,7 @@ const filesData: FileItemData[] = [
     title: 'test-title1',
     components: {
       type: 'md',
+      value: '# test1',
       path: './test1.md',
     },
   },
@@ -29,6 +30,7 @@ const filesData: FileItemData[] = [
     title: 'test-title2',
     components: {
       type: 'md',
+      value: '## test2',
       path: './test2.md',
     },
   },

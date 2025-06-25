@@ -9,6 +9,7 @@ export type FileType = 'md' | 'txt' | 'image' | 'svg';
 export type components = {
   type: FileType;
   path: string;
+  value: string;
 };
 
 export type FileItemData = {
@@ -31,8 +32,8 @@ type TabItemTagsProps = {
 };
 
 type TabItemValueProps = {
-  selectedId: string
-}
+  selectedId: string;
+};
 
 export function TabItem({ fileItemData, selectedId, updateSelectedId }: TabItemProps) {
   const [isHover, setIsHover] = useState<boolean>(false);
@@ -75,17 +76,16 @@ export function TabItemTags({ selectedId, updateSelectedId }: TabItemTagsProps) 
 
 function TabItemValue({ selectedId }: TabItemValueProps) {
   const { appState } = useAppState();
-  const fileItemData: FileItemData|undefined = appState.openFiles.find((item) => item.id === selectedId)
+  const fileItemData: FileItemData | undefined = appState.openFiles.find((item) => item.id === selectedId);
 
   if (fileItemData === undefined) return null;
-  
+
   const fileType: string = fileItemData.components.type;
-  if (fileType === "md") {
-    return <Editor />
-  }
-  else if (fileType === "txt") return null;
-  else if (fileType === "image") return null;
-  else if (fileType === "svg") return null;
+  if (fileType === 'md') {
+    return <Editor fileItem={fileItemData} />;
+  } else if (fileType === 'txt') return null;
+  else if (fileType === 'image') return null;
+  else if (fileType === 'svg') return null;
 }
 
 export function TabContainer() {

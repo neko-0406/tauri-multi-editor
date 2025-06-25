@@ -19,24 +19,23 @@ import { CheckListPlugin } from '@lexical/react/LexicalCheckListPlugin';
 import { MarkdownShortcutPlugin } from '@lexical/react/LexicalMarkdownShortcutPlugin';
 import EditorOnChangePlugin from './plugin/EditorOnChangePlugin';
 import { FileItemData } from '../Tabs';
+import { TRANSFORMERS } from '@lexical/markdown';
 
 type EditorProps = {
   fileItem: FileItemData;
-}
+};
 
 function onError(error: any) {
   console.log(error);
 }
 
-export default function Editor({ fileIte }: FileItemData) {
+export default function Editor({ fileItem }: EditorProps) {
   const initialConfig = {
     namespace: 'editor',
     nodes: editorNodes,
     editorTheme,
     onError,
   };
-
-  const onChangeHandler = () => {};
 
   return (
     <LexicalComposer initialConfig={initialConfig}>
@@ -55,8 +54,8 @@ export default function Editor({ fileIte }: FileItemData) {
       <TablePlugin hasCellMerge={true} hasCellBackgroundColor={true} hasHorizontalScroll={true} />
       <LinkPlugin />
       <CheckListPlugin />
-      <MarkdownShortcutPlugin />
-      <EditorOnChangePlugin onEditorStateChange={onChangeHandler} />
+      <MarkdownShortcutPlugin transformers={TRANSFORMERS} />
+      <EditorOnChangePlugin fileItem={fileItem} />
     </LexicalComposer>
   );
 }

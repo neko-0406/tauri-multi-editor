@@ -7,6 +7,7 @@ export type AppSettingType = {
   googleAuthClientId: string;
   googleAuthClientSecret: string;
   geminiApiKey: string;
+  autoSave: boolean;
 };
 
 const defaultAppSetting: AppSettingType = {
@@ -16,6 +17,7 @@ const defaultAppSetting: AppSettingType = {
   googleAuthClientId: '',
   googleAuthClientSecret: '',
   geminiApiKey: '',
+  autoSave: false,
 };
 
 const AppSettingContext = createContext<{
