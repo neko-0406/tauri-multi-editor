@@ -17,22 +17,46 @@ export default function EditorOnChangePlugin({ fileItem }: EditorOnChangePluginP
   const { settings } = useAppSettings();
   const [editorState, setEditorState] = useState<EditorState>();
 
-  const writeContent = useCallback(async() => {
+  const writeContent = useCallback(
+    async (content: string | undefined) => {
+      const result: boolean = await invoke<boolean>('write_string_to_file', {
+        path: fileItem.components.path,
+        contents: content,
+      });
+      if (!result) {
+        console.log('ファイルの書き込みに失敗しました。');
+      }
+    },
+    [editorState]
+  );
+
+  useEffect(() => {
     const markdown = editorState?.read(() => {
       return $convertToMarkdownString(TRANSFORMERS);
     });
-    const result: boolean = await invoke<boolean>('write_string_to_file', {
-      path: fileItem.components.path,
-      contents: markdown,
-    });
-    if (!result) {
-      console.log('ファイルの書き込みに失敗しました。');
+
+    if (markdown) {
+      setAppState((preState) => ({
+        ...preState,
+        openFiles: preState.openFiles.map((file) =>
+          file.id === fileItem.id
+            ? {
+                ...file,
+                components: {
+                  ...file.components,
+                  value: markdown,
+                },
+              }
+            : file
+        ),
+      }));
     }
-  }, [editorState])
 
-  useEffect(() => {
-
-  }, [editorState])
+    if (settings.autoSave) {
+      // autsave -> true
+      writeContent(markdown);
+    }
+  }, [editorState]);
 
   return <OnChangePlugin onChange={setEditorState} />;
 }
