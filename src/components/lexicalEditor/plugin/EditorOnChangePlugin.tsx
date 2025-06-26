@@ -1,11 +1,12 @@
 import { OnChangePlugin } from '@lexical/react/LexicalOnChangePlugin';
 import { FileItemData } from '../../Tabs';
-import { useCallback, useRef } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 import { $convertToMarkdownString, TRANSFORMERS } from '@lexical/markdown';
 import { EditorState } from 'lexical';
 import { useAppState } from '../../AppState/StateProvider';
 import { useAppSettings } from '../../AppSetting/SettingProvider';
+import { invoke } from '@tauri-apps/api/core';
 
 type EditorOnChangePluginProps = {
   fileItem: FileItemData;
@@ -14,34 +15,24 @@ type EditorOnChangePluginProps = {
 export default function EditorOnChangePlugin({ fileItem }: EditorOnChangePluginProps) {
   const { setAppState } = useAppState();
   const { settings } = useAppSettings();
+  const [editorState, setEditorState] = useState<EditorState>();
 
-  const changeCallback = useCallback((editorState: EditorState) => {
-    const markdown = editorState.read(() => {
-      return $convertToMarkdownString(TRANSFORMERS)
-    })
+  const writeContent = useCallback(async() => {
+    const markdown = editorState?.read(() => {
+      return $convertToMarkdownString(TRANSFORMERS);
+    });
+    const result: boolean = await invoke<boolean>('write_string_to_file', {
+      path: fileItem.components.path,
+      contents: markdown,
+    });
+    if (!result) {
+      console.log('ファイルの書き込みに失敗しました。');
+    }
+  }, [editorState])
 
-    setAppState((preState) => ({
-      ...preState,
-      openFiles: preState.openFiles.map((file) =>
-        file.id === fileItem.id
-          ? {
-              ...file,
-              components: {
-                ...file.components,
-                value: markdown,
-              },
-            }
-          : file
-      ),
-    }));
-  }, [fileItem.id, setAppState]);
+  useEffect(() => {
 
-  if (settings.autoSave) { // 自動保存が有効
-    
-  }
-  else { // 自動保存が無効
+  }, [editorState])
 
-  }
-
-  return <OnChangePlugin onChange={changeCallback} />;
+  return <OnChangePlugin onChange={setEditorState} />;
 }
