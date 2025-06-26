@@ -19,6 +19,7 @@ export default function EditorOnChangePlugin({ fileItem }: EditorOnChangePluginP
 
   const writeContent = useCallback(
     async (content: string | undefined) => {
+      if (!content) return;
       const result: boolean = await invoke<boolean>('write_string_to_file', {
         path: fileItem.components.path,
         contents: content,
@@ -27,15 +28,17 @@ export default function EditorOnChangePlugin({ fileItem }: EditorOnChangePluginP
         console.log('ファイルの書き込みに失敗しました。');
       }
     },
-    [editorState]
+    [fileItem.components.path]
   );
 
   useEffect(() => {
-    const markdown = editorState?.read(() => {
+    if (!editorState) return;
+
+    const markdown = editorState.read(() => {
       return $convertToMarkdownString(TRANSFORMERS);
     });
 
-    if (markdown) {
+    if (markdown !== undefined && markdown !== '') {
       setAppState((preState) => ({
         ...preState,
         openFiles: preState.openFiles.map((file) =>
@@ -52,11 +55,12 @@ export default function EditorOnChangePlugin({ fileItem }: EditorOnChangePluginP
       }));
     }
 
+
     if (settings.autoSave) {
       // autsave -> true
       writeContent(markdown);
     }
-  }, [editorState]);
+  }, [editorState, fileItem.id, setAppState, settings.autoSave, writeContent]);
 
   return <OnChangePlugin onChange={setEditorState} />;
 }
