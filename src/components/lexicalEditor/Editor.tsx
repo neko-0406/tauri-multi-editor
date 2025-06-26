@@ -17,7 +17,7 @@ import { TablePlugin } from '@lexical/react/LexicalTablePlugin';
 import { LinkPlugin } from '@lexical/react/LexicalLinkPlugin';
 import { CheckListPlugin } from '@lexical/react/LexicalCheckListPlugin';
 import { MarkdownShortcutPlugin } from '@lexical/react/LexicalMarkdownShortcutPlugin';
-import EditorOnChangePlugin from './plugin/EditorOnChangePlugin';
+import EditorOnChangePlugin from './plugin/EditorOnChangePlugin_';
 import { FileItemData } from '../Tabs';
 import { TRANSFORMERS } from '@lexical/markdown';
 
