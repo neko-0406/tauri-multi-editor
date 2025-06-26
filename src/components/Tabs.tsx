@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { FaXmark } from 'react-icons/fa6';
 import '../styles/Tabs.css';
 import { useAppState } from './AppState/StateProvider';
@@ -32,7 +32,7 @@ type TabItemTagsProps = {
 };
 
 type TabItemValueProps = {
-  selectedId: string;
+  selectedId: string|null;
 };
 
 export function TabItem({ fileItemData, selectedId, updateSelectedId }: TabItemProps) {
@@ -90,7 +90,8 @@ function TabItemValue({ selectedId }: TabItemValueProps) {
 
 export function TabContainer() {
   const [selectedId, setSelectedId] = useState<string | null>(null);
-  const { appState } = useAppState();
+
+  useEffect(() => console.log(selectedId), [selectedId])
 
   return (
     <div className="tab-space">
@@ -100,7 +101,7 @@ export function TabContainer() {
       </div>
       {/* 選択されたタブの内容を表示するところ */}
       <div className="tab-display-space">
-        {appState.openFiles.find((item) => item.id === selectedId)?.components.path}
+        <TabItemValue selectedId={selectedId} />
       </div>
     </div>
   );
