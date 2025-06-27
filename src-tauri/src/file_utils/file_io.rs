@@ -1,4 +1,4 @@
-use std::fs::{self, File};
+use std::fs::{self};
 
 #[tauri::command]
 pub fn read_file_to_string(path: String) -> Option<String> {

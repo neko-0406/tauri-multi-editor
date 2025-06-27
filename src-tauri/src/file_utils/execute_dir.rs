@@ -1,4 +1,4 @@
-use std::{env, fs::{self, File}, io::BufReader, path::Path};
+use std::env;
 
 #[tauri::command]
 pub fn get_execute_dir() -> Option<String> {
