@@ -20,6 +20,7 @@ import { MarkdownShortcutPlugin } from '@lexical/react/LexicalMarkdownShortcutPl
 import EditorOnChangePlugin from './plugin/EditorOnChangePlugin';
 import { FileItemData } from '../Tabs';
 import { TRANSFORMERS } from '@lexical/markdown';
+import EditorInitializePlugin from './plugin/EditorInitializePlugin';
 
 type EditorProps = {
   fileItem: FileItemData;
@@ -56,6 +57,7 @@ export default function Editor({ fileItem }: EditorProps) {
       <CheckListPlugin />
       <MarkdownShortcutPlugin transformers={TRANSFORMERS} />
       <EditorOnChangePlugin fileItem={fileItem} />
+      <EditorInitializePlugin fileItem={fileItem} />
     </LexicalComposer>
   );
 }
