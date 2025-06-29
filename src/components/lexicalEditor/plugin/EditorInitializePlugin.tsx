@@ -13,10 +13,10 @@ export default function EditorInitializePlugin({ fileItem }: EditorInitializePlu
   const [editor] = useLexicalComposerContext();
 
   useEffect(() => {
-    const selefData = appState.openFiles.find(item => item.id === fileItem.id)
-    if (selefData) {
+    const selfData = appState.openFiles.find(item => item.id === fileItem.id)
+    if (selfData) {
       editor.update(() => {
-        const markdown = selefData.components.value
+        const markdown = selfData.components.value
         $convertFromMarkdownString(markdown, TRANSFORMERS);
       })
     } else {
