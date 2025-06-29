@@ -2,7 +2,6 @@ import './styles/App.css';
 import { AppSettingProvider } from './components/AppSetting/SettingProvider';
 import { AppStateProvider } from './components/AppState/StateProvider';
 import SideMenuSpace from './components/SideMenuSpace';
-import { TabContainer } from './components/Tabs';
 import SideMenuBar, { SideMenuItem } from './components/SideMenuBar';
 import { FaGear } from 'react-icons/fa6';
 
@@ -25,7 +24,6 @@ function App() {
           <SideMenuSpace />
           {/* アイテム表示部分 */}
           <div className="main-display-space">
-            <TabContainer />
           </div>
         </div>
         <div className="app-status-bar"></div>

@@ -1,35 +1,12 @@
 import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext';
 import { useEffect } from 'react';
 import { useAppState } from '../../AppState/StateProvider';
-import { FileItemData } from '../../Tabs';
-import { $convertFromMarkdownString, TRANSFORMERS } from '@lexical/markdown';
 
-type EditorInitializePluginProps = {
-  fileItem: FileItemData
-}
-
-export default function EditorInitializePlugin({ fileItem }: EditorInitializePluginProps) {
+export default function EditorInitializePlugin() {
   const { appState } = useAppState();
   const [editor] = useLexicalComposerContext();
 
   useEffect(() => {
-    const selfData = appState.openFiles.find(item => item.id === fileItem.id)
-    if (selfData) {
-      editor.update(() => {
-        const markdown = selfData.components.value
-        $convertFromMarkdownString(markdown, TRANSFORMERS);
-      })
-    } else {
-      const fileItemData: FileItemData = {
-        id: '',
-        title: '',
-        components: {
-          type: 'md',
-          path: '',
-          value: ''
-        }
-      }
-    }
   }, []);
 
   return null;

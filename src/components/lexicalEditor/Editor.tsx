@@ -17,20 +17,14 @@ import { TablePlugin } from '@lexical/react/LexicalTablePlugin';
 import { LinkPlugin } from '@lexical/react/LexicalLinkPlugin';
 import { CheckListPlugin } from '@lexical/react/LexicalCheckListPlugin';
 import { MarkdownShortcutPlugin } from '@lexical/react/LexicalMarkdownShortcutPlugin';
-import EditorOnChangePlugin from './plugin/EditorOnChangePlugin';
-import { FileItemData } from '../Tabs';
 import { TRANSFORMERS } from '@lexical/markdown';
-import EditorInitializePlugin from './plugin/EditorInitializePlugin';
 
-type EditorProps = {
-  fileItem: FileItemData;
-};
 
 function onError(error: any) {
   console.log(error);
 }
 
-export default function Editor({ fileItem }: EditorProps) {
+export default function Editor() {
   const initialConfig = {
     namespace: 'editor',
     nodes: editorNodes,
@@ -56,8 +50,6 @@ export default function Editor({ fileItem }: EditorProps) {
       <LinkPlugin />
       <CheckListPlugin />
       <MarkdownShortcutPlugin transformers={TRANSFORMERS} />
-      <EditorOnChangePlugin fileItem={fileItem} />
-      <EditorInitializePlugin fileItem={fileItem} />
     </LexicalComposer>
   );
 }

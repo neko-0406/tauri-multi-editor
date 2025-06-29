@@ -17,20 +17,20 @@ export default function SideMenuBar({ sideMenuTopItems, sideMenuBottomItems }: S
       {/* 検索などを入れるところ */}
       <div className="side-menu-top-icon-container">
         {sideMenuTopItems?.map((item) => (
-          <SideMenuItemIcom key={item.id} id={item.id} icon={item.icon} click={item.click} />
+          <SideMenuItemIcon key={item.id} id={item.id} icon={item.icon} click={item.click} />
         ))}
       </div>
       {/* 設定などを入れるとこ */}
       <div className="side-menu-bottom-icon-container">
         {sideMenuBottomItems?.map((item) => (
-          <SideMenuItemIcom key={item.id} id={item.id} icon={item.icon} click={item.click} />
+          <SideMenuItemIcon key={item.id} id={item.id} icon={item.icon} click={item.click} />
         ))}
       </div>
     </div>
   );
 }
 
-export function SideMenuItemIcom({ icon, click }: SideMenuItem) {
+export function SideMenuItemIcon({ icon, click }: SideMenuItem) {
   return (
     <button className="side-menu-button-icon" type="button" onClick={click}>
       {icon}
