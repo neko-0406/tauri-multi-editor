@@ -4,6 +4,19 @@ import { AppStateProvider } from './components/AppState/StateProvider';
 import SideMenuSpace from './components/SideMenuSpace';
 import SideMenuBar, { SideMenuItem } from './components/SideMenuBar';
 import { FaGear } from 'react-icons/fa6';
+import { Menu } from '@tauri-apps/api/menu';
+
+const windowMenu = await Menu.new({
+  items: [
+    {
+      id: 'file',
+      text: 'ファイル',
+      action: () => {},
+    },
+  ],
+});
+
+windowMenu.setAsAppMenu().then(res => {console.log(res)})
 
 const demoData: SideMenuItem = {
   id: '',
@@ -23,8 +36,7 @@ function App() {
           {/* サイドメニューバー関連のUI置くとこ・基本閉じる*/}
           <SideMenuSpace />
           {/* アイテム表示部分 */}
-          <div className="main-display-space">
-          </div>
+          <div className="main-display-space"></div>
         </div>
         <div className="app-status-bar"></div>
       </AppStateProvider>
