@@ -19,7 +19,6 @@ import { CheckListPlugin } from '@lexical/react/LexicalCheckListPlugin';
 import { MarkdownShortcutPlugin } from '@lexical/react/LexicalMarkdownShortcutPlugin';
 import { TRANSFORMERS } from '@lexical/markdown';
 
-
 function onError(error: any) {
   console.log(error);
 }

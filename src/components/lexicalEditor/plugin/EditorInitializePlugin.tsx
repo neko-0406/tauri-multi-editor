@@ -6,8 +6,7 @@ export default function EditorInitializePlugin() {
   const { appState } = useAppState();
   const [editor] = useLexicalComposerContext();
 
-  useEffect(() => {
-  }, []);
+  useEffect(() => {}, []);
 
   return null;
 }
