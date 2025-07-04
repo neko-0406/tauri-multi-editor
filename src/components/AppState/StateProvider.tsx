@@ -1,40 +1,16 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
-import { FileItemData } from '../Tabs';
 
 export type AppStateType = {
   openWorkspace: string;
   selectedTabId: string;
-  openFiles: FileItemData[];
   sideMenuSpaceWidth: number;
 };
 
 const defaultAppSetting: AppStateType = {
   openWorkspace: '',
   selectedTabId: '',
-  openFiles: [],
   sideMenuSpaceWidth: 0,
 };
-
-const filesData: FileItemData[] = [
-  {
-    id: 'test-1',
-    title: 'test-title1',
-    components: {
-      type: 'md',
-      value: '# test1',
-      path: './test1.md',
-    },
-  },
-  {
-    id: 'test-2',
-    title: 'test-title2',
-    components: {
-      type: 'md',
-      value: '## test2',
-      path: './test2.md',
-    },
-  },
-];
 
 const AppStateContext = createContext<{
   appState: AppStateType;
@@ -49,7 +25,7 @@ export const AppStateProvider = ({ children }: { children: React.ReactNode }): J
 
   // デモデータで内容を初期化
   useEffect(() => {
-    setAppState((state) => ({ ...state, openFiles: filesData }));
+    setAppState((state) => ({ ...state }));
   }, []);
 
   return <AppStateContext.Provider value={{ appState, setAppState }}>{children}</AppStateContext.Provider>;
