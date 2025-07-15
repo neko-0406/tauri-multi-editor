@@ -12,12 +12,12 @@ type MemoPosition = { x: number; y: number };
 type MemoSize = { w: number; h: number };
 
 export function Memo({}: MemoProps) {
-  const [memoPosition, setMemoPostion] = useState<MemoPosition>({x:50, y:50});
-  const [memoSize, setMemoSize] = useState<MemoSize>({w:150, h:110});
+  const [memoPosition, setMemoPostion] = useState<MemoPosition>({ x: 50, y: 50 });
+  const [memoSize, setMemoSize] = useState<MemoSize>({ w: 150, h: 110 });
   const [isEdit, setIsEdit] = useState<boolean>(false);
   const isResizing = useRef<boolean>(false);
 
-  const handleIsEditClick = useCallback(() => setIsEdit(pre => !pre), [])
+  const handleIsEditClick = useCallback(() => setIsEdit((pre) => !pre), []);
 
   return (
     <div
@@ -30,13 +30,14 @@ export function Memo({}: MemoProps) {
       }}
     >
       <div className="memo-icon-space">
-        <button type='button' className='memo-tool-button' onClick={handleIsEditClick}>{isEdit ? <AiOutlineEdit size={20}/> : <AiOutlineRead size={20}/> }</button>
+        <button type="button" className="memo-tool-button" onClick={handleIsEditClick}>
+          {isEdit ? <AiOutlineEdit size={20} /> : <AiOutlineRead size={20} />}
+        </button>
       </div>
       <div className="markdown-space">
         <Editor />
       </div>
       <div className="memo-resize-area" />
-
     </div>
   );
 }

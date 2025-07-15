@@ -19,7 +19,7 @@ import { CheckListPlugin } from '@lexical/react/LexicalCheckListPlugin';
 import { MarkdownShortcutPlugin } from '@lexical/react/LexicalMarkdownShortcutPlugin';
 import { TRANSFORMERS } from '@lexical/markdown';
 
-import "../../styles/Editor.css"
+import '../../styles/Editor.css';
 
 function onError(error: any) {
   console.log(error);
@@ -36,7 +36,12 @@ export default function Editor() {
   return (
     <LexicalComposer initialConfig={initialConfig}>
       <RichTextPlugin
-        contentEditable={<ContentEditable aria-placeholder="ここに入力..." placeholder={<div className='editor-placeholder'>ここに入力...</div>} />}
+        contentEditable={
+          <ContentEditable
+            aria-placeholder="ここに入力..."
+            placeholder={<div className="editor-placeholder">ここに入力...</div>}
+          />
+        }
         ErrorBoundary={LexicalErrorBoundary}
       />
       <HistoryPlugin />
